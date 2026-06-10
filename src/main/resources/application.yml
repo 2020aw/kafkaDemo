@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    # 生产者配置
+    producer:
+      # 重试次数
+      retries: 3
+      # 应答级别: 0=不等待, 1=leader确认, all=所有副本确认
+      acks: 1
+      # 批量大小
+      batch-size: 16384
+      # 缓冲区大小
+      buffer-memory: 33554432
+      # key 序列化
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # value 序列化
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    # 消费者配置
+    consumer:
+      # 消费者组ID
+      group-id: kafka-demo-group
+      # 当各分区没有初始offset时，从最早开始消费
+      auto-offset-reset: earliest
+      # 是否自动提交offset
+      enable-auto-commit: true
+      # 自动提交间隔
+      auto-commit-interval: 1000
+      # key 反序列化
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # value 反序列化
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    # 监听器配置
+    listener:
+      # 手动ack模式 (注释掉即默认自动提交)
+      # ack-mode: manual
+      # 并发数
+      concurrency: 3
