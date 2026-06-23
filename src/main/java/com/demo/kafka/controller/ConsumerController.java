@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/consumer")
 public class ConsumerController {
     //基础 poll 拉取消息、循环消费
-
     //消费者组、分区分配规则（轮询 / 粘性）
 
     //Offset 手动提交、自动提交区别，丢消息 / 重复消费解决方案

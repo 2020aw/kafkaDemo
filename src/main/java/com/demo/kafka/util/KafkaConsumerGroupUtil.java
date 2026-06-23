@@ -18,6 +18,7 @@ import java.util.*;
 @Component
 public class KafkaConsumerGroupUtil {
 
+
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
